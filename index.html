@@ -69,7 +69,8 @@ share-description: Musical Source Separation of Brazilian Percussion
     <h5 class="mx-auto text-center" style="color: black">Accepted at ISMIR 2025</h5>
 
         <br>
-    <!-- <h4 class="mx-auto text-center" style="color: black"><a href="assets/pdf/490_lbd.pdf">[PDF]</a>  <a href="assets/pdf/490_poster.pdf">[Poster]</a></h4> -->
+    <h4 class="mx-auto text-center" style="color: black"><a href="https://arxiv.org/abs/2507.00155">[PDF]</a> 
+        <!-- <a href="assets/pdf/490_poster.pdf">[Poster]</a></h4> -->
 
     </h4>
     </div>
@@ -77,11 +78,637 @@ share-description: Musical Source Separation of Brazilian Percussion
     <br>
     <h3 style="text-align: center">Summary</h3>
     <p class="lead mb-0" align="justify" style="padding-bottom: 20px;">
-    Binaural audio remains underexplored within the music information retrieval community. Motivated by the rising popularity of virtual and augmented reality experiences as well as potential applications to accessibility, we investigate how well current state-of-the-art music source separation (MSS) models perform on binaural audio. Although these models process two-channel inputs, it is unclear how effectively they retain spatial information. In this work, we evaluate how popular MSS models preserve spatial information on both standard stereo and novel binaural datasets. Our binaural data is synthesized using stems from MUSDB18-HQ and open-source head-related transfer functions by positioning instrument sources randomly along the horizontal plane. We then assess the spatial quality of the separated stems using signal processing and interaural cue-based metrics. Our results show that stereo MSS models fail to preserve the spatial information critical for maintaining the immersive quality of binaural audio, and that the degradation depends on model architecture as well as the target instrument. Finally, we highlight valuable opportunities for future work at the intersection of MSS and immersive audio.
+    Binaural audio remains underexplored within the music information retrieval community.
+    Motivated by the rising popularity of virtual and augmented reality experiences as well as potential applications to accessibility, we investigate how well existing music source separation (MSS) models perform on binaural audio.
+    Although these models process two-channel inputs, it is unclear how effectively they retain spatial information.
+    In this work, we evaluate how several popular MSS models preserve spatial information on both standard stereo and novel binaural datasets.
+    Our binaural data is synthesized using stems from MUSDB18-HQ and open-source head-related transfer functions by positioning instrument sources randomly along the horizontal plane.
+    We then assess the spatial quality of the separated stems using signal processing and interaural cue-based metrics.
+    Our results show that stereo MSS models fail to preserve  the spatial information critical for maintaining the immersive quality of binaural audio, and that the degradation depends on model architecture as well as the target instrument.
+    Finally, we highlight valuable opportunities for future work at the intersection of MSS and immersive audio.
     </p>
     <br>
 
     <br>
-    <h3 style="text-align: center; padding-bottom: 20px;">Audio Examples</h3>
+    <h3 style="text-align: center; padding-bottom: 20px;">Audio Examples and Metrics</h3>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <img src="assets/img/source_placement.png" width="400" alt="Diagram illustrating the random placement of instrument sources in Binaural-MUSDB.">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <p> SSR: Signal to Spatial Distortion Ratio &nbsp;&nbsp;&nbsp; SRR: Signal to Residual Distortion Ratio</p>
+        </div>
+        <div class="row justify-content-center">
+            <p> &Delta;ITD: Distortion in Interaural Time Difference &nbsp;&nbsp;&nbsp; &Delta;ILD: Distortion in Interaural Level Difference</p>
+        </div>
+    </div>
+
+    <!-- BASS -->
+    <div class="container">
+        <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
+            <h4>Bass: Hollow Ground - "Ill Fate"</h4>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Binaural</h5>
+            </div>
+            <div class="col">
+                <h5>Stereo</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/mixture_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/mixture_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Reference Stem (&#952; = 90&deg;)</b></p>
+            </div>
+            <div class="col">
+                <p><b>Reference Stem</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/ref_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/ref_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 6.47 dB &nbsp;&nbsp;&nbsp; SRR: 3.31 dB </p>
+                <p>&Delta;ITD: 816.33 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 1.49 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 9.56 dB &nbsp;&nbsp;&nbsp; SRR: 0.36 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.65 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/demucs_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/demucs_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 6.79 dB &nbsp;&nbsp;&nbsp; SRR: -1.10 dB </p>
+                <p>&Delta;ITD: 997.73 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 2.61 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 12.01dB &nbsp;&nbsp;&nbsp; SRR: -2.62 </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.22 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/umxhq_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/umxhq_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 12.13 dB &nbsp;&nbsp;&nbsp; SRR: -2.60 dB</p>
+                <p>&Delta;ITD: 1020.41 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 2.35 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 4.09 dB &nbsp;&nbsp;&nbsp; SRR: -3.53 dB </p>
+                <p>&Delta;ITD: 22.68 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.39 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/spleeter_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/bass/spleeter_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- VOCALS-->
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <h4>Vocals: Ben Carrigan - "We'll Talk About It All Tonight"</h4>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Binaural</h5>
+            </div>
+            <div class="col">
+                <h5>Stereo</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/mixture_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/mixture_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Reference Stem (&#952; = 60&deg;)</b></p>
+            </div>
+            <div class="col">
+                <p><b>Reference Stem</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/ref_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/ref_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 5.52 dB &nbsp;&nbsp;&nbsp; SRR: 0.00 dB </p>
+                <p>&Delta;ITD: 566.89 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.27 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 5.77 dB &nbsp;&nbsp;&nbsp; SRR: 0.08 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.03 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/demucs_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/demucs_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 1.45 dB &nbsp;&nbsp;&nbsp; SRR: -4.47 dB </p>
+                <p>&Delta;ITD: 294.78 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.14 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 2.05 dB &nbsp;&nbsp;&nbsp; SRR: -1.92 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.13 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/umxhq_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/umxhq_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 0.00 dB &nbsp;&nbsp;&nbsp; SRR: -3.71 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.73 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 3.06 dB &nbsp;&nbsp;&nbsp; SRR: 0.00 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.23 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/spleeter_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/vocals/spleeter_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- DRUMS-->
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <h4>Drums: The Easton Ellises - "Falcon 69"</h4>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Binaural</h5>
+            </div>
+            <div class="col">
+                <h5>Stereo</h5>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/mixture_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/mixture_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Reference Stem (&#952; = 90&deg;)</b></p>
+            </div>
+            <div class="col">
+                <p><b>Reference Stem</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/ref_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/ref_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 25.53 dB &nbsp;&nbsp;&nbsp; SRR: 10.06 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.30 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 21.36 dB &nbsp;&nbsp;&nbsp; SRR: 10.16 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.02 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/demucs_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/demucs_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 24.60 dB &nbsp;&nbsp;&nbsp; SRR: 8.51 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.37 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 15.91 dB &nbsp;&nbsp;&nbsp; SRR: 6.40 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.01 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/umxhq_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/umxhq_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 19.32 dB &nbsp;&nbsp;&nbsp; SRR: 7.60 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.51 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 15.87 dB &nbsp;&nbsp;&nbsp; SRR: 7.14 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.00 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/spleeter_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/drums/spleeter_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+    </div>
+
+<!-- OTHER-->
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <h4>Other: Enda Reilly - "Cur An Long Ag Seol"</h4>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Binaural</h5>
+            </div>
+            <div class="col">
+                <h5>Stereo</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+            <div class="col">
+                <p><b>Input - Mixture</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/mixture_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/mixture_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Reference Stem (&#952; = -30&deg;)</b></p>
+            </div>
+            <div class="col">
+                <p><b>Reference Stem</b></p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/ref_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/ref_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 14.28 dB &nbsp;&nbsp;&nbsp; SRR: 7.64 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.05 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Demucs</b></p>
+                <p>SSR: 19.06 dB &nbsp;&nbsp;&nbsp; SRR: 9.40dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.04 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/demucs_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/demucs_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 15.93 dB &nbsp;&nbsp;&nbsp; SRR: 4.69 dB </p>
+                <p>&Delta;ITD: 90.70 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.24 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Open-Unmix</b></p>
+                <p>SSR: 15.24 dB &nbsp;&nbsp;&nbsp; SRR: 5.49 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.36 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/umxhq_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/umxhq_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 15.41 dB &nbsp;&nbsp;&nbsp; SRR: 3.77 dB </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.45 dB</p>
+            </div>
+            <div class="col">
+                <p><b>Output - Spleeter</b></p>
+                <p>SSR: 15.46 dB &nbsp;&nbsp;&nbsp; SRR: 4.83 </p>
+                <p>&Delta;ITD: 0.00 &mu;s &nbsp;&nbsp;&nbsp; &Delta;ILD: 0.62 dB</p>
+            </div>
+        </div>
+
+        <div class="row" style="width: 100%; height: auto; margin-bottom: 30px;">
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/spleeter_binaural.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col">
+                <audio controls>
+                  <source src="assets/audio/other/spleeter_stereo.wav" type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+    </div>
 
 </body>
